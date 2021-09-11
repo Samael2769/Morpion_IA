@@ -33,4 +33,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: tests_bash
-      run: tests/test_matchstick.sh
+      run: tests/test_TicTacToe.sh
