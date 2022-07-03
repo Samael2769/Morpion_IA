@@ -11,16 +11,19 @@
 static void game(int type, char **map)
 {
     while (1) {
-        display_map(map);
-        if (player(map, 'X') == -1)
-            break;
-        display_map(map);
         if (end_condition(map) != 0)
             break;
+        display_map(map);
+        printf("Player 1 turn: \n");
+        if (player(map, 'X') == -1) {
+            break;
+        }
+        display_map(map);
+        printf("Player 2 turn: \n");
         if (type == 1) {
             if (player(map, 'O') == -1)
                 break;
-        }else
+        } else
             sm_ia(map);
         if (end_condition(map) != 0) {
             display_map(map);
