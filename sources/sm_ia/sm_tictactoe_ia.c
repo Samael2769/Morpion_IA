@@ -147,9 +147,9 @@ static vector_t ia_level_four(char **map)
 {
     vector_t vec;
 
-    vec = defend(map);
+    vec = attack(map);
     if (vec.x == -1) {
-        vec = attack(map);
+        vec = defend(map);
     }
     if (vec.x == -1) {
         vec = ia_level_one(map);
@@ -157,9 +157,20 @@ static vector_t ia_level_four(char **map)
     return (vec);
 }
 
-void sm_ia(char **map)
+void sm_ia(char **map, int level)
 {
     vector_t vec;
-    vec = ia_level_two(map);
+    if (level == 1) {
+        vec = ia_level_one(map);
+    }
+    if (level == 2) {
+        vec = ia_level_two(map);
+    }
+    if (level == 3) {
+        vec = ia_level_three(map);
+    }
+    if (level == 4) {
+        vec = ia_level_four(map);
+    }
     write_on_map(vec.x + 1, vec.y + 1, map, 'O');
 }

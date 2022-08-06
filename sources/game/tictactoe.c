@@ -8,7 +8,7 @@
 #include "TicTacToe.h"
 #include "sm_libc.h"
 
-static void game(int type, char **map)
+static void game(int type, char **map, int level)
 {
     while (1) {
         if (end_condition(map) != 0)
@@ -24,7 +24,7 @@ static void game(int type, char **map)
             if (player(map, 'O') == -1)
                 break;
         } else
-            sm_ia(map);
+            sm_ia(map, level);
         if (end_condition(map) != 0) {
             display_map(map);
             break;
@@ -32,11 +32,11 @@ static void game(int type, char **map)
     }
 }
 
-int tictactoe(int type)
+int tictactoe(int type, int level)
 {
     char **map = create_map();
 
-    game(type, map);
+    game(type, map, level);
     sm_freetab(map);
     return 0;
 }
