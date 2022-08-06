@@ -8,6 +8,11 @@
 #ifndef TICTACTOE_H
 #define TICTACTOE_H
 
+typedef struct vector_s {
+    int x;
+    int y;
+} vector_t;
+
 int tictactoe(int type);
 char **create_map(void);
 int player(char **map, char c);
